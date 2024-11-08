@@ -1,7 +1,7 @@
 <script setup></script>
 <template>
   <div
-    class="w-full h-[378px] bg-[url('/testFigma/Rectangle470.png')] bg-no-repeat -z-40 pt-[50px] px-5 bg-cover bg-bottom"
+    class="w-full h-[378px] bg-[url('/testFigma/Rectangle470.png')] bg-no-repeat -z-40 sm:pt-[70px] pt-[30px] px-5 bg-cover bg-bottom"
   >
     <div class="flex flex-col gap-10">
       <div class="flex place-content-center">
