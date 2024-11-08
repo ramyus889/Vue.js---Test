@@ -1,12 +1,10 @@
 <script setup>
-import UseHeader from './component/UseHeader.vue';
+import UseHeader from './component/Header/UseHeader.vue';
 </script>
 
 <template>
   <div class="">
-    <div class="">
-      <UseHeader />
-      <RouterView />
-    </div>
+    <UseHeader />
+    <RouterView />
   </div>
 </template>

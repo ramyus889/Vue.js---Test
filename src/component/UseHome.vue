@@ -1,7 +1,12 @@
-<script setup></script>
+<script setup>
+import UseMain from './Main/UseMain.vue';
+</script>
 
 <template>
-  <div class="mt-20 ms-20">
-    <div class="">sads</div>
+  <div class="">
+    <div class="">
+      <UseMain />
+      <div class="my-[2000px]"></div>
+    </div>
   </div>
 </template>
