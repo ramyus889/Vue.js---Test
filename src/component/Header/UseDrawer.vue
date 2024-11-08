@@ -2,7 +2,7 @@
   <div class="sticky top-0 bottom-0">
     <Drawer
       v-model:visible="visible"
-      header="Test"
+      header="Мой бизнес"
       position="top"
       class="!bg-white !h-[200px] !text-black"
     >
