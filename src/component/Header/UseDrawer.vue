@@ -1,9 +1,14 @@
 <template>
   <div class="sticky top-0 bottom-0">
-    <Drawer v-model:visible="visible" header="Test" position="top">
-      <div class="flex flex-col gap-1">
-        <a href="#" @click="visible = false">Каталог услуг</a>
-        <a href="#" @click="visible = false">Онлайн помощник</a>
+    <Drawer
+      v-model:visible="visible"
+      header="Test"
+      position="top"
+      class="!bg-white !h-[200px] !text-black"
+    >
+      <div class="flex flex-col gap-1 pt-3 border-t border-t-black">
+        <a href="#" @click="visible = false" class="font-bold underline">Каталог услуг</a>
+        <a href="#" @click="visible = false" class="font-bold underline">Онлайн помощник</a>
       </div>
     </Drawer>
     <div class="w-full">
