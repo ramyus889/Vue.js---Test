@@ -1,4 +1,5 @@
 <script setup>
+import UseFooter from './Footer/UseFooter.vue';
 import UseImgFooter from './Footer/UseImgFooter.vue';
 import UseFootMain from './Main/UseFootMain.vue';
 import UseMain from './Main/UseMain.vue';
@@ -14,6 +15,7 @@ import UseThreeCardCol from './Main/UseThreeCardCol.vue';
       <UseThreeCard />
       <UseThreeCardCol />
       <UseImgFooter />
+      <UseFooter />
     </div>
   </div>
 </template>
