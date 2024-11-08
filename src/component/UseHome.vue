@@ -1,4 +1,5 @@
 <script setup>
+import UseFootMain from './Main/UseFootMain.vue';
 import UseMain from './Main/UseMain.vue';
 </script>
 
@@ -6,7 +7,8 @@ import UseMain from './Main/UseMain.vue';
   <div class="">
     <div class="">
       <UseMain />
-      <div class="my-[2000px]"></div>
+      <UseFootMain />
+      <div class="my-[1000px]"></div>
     </div>
   </div>
 </template>

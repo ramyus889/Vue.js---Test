@@ -30,7 +30,7 @@ onUnmounted(() => {
   <div
     :class="[
       'fixed top-0 left-0 right-0 z-[1000]',
-      { 'bg-blur max-[640px]:pb-5': isScrollingDown }
+      { 'backdrop-blur max-[640px]:pb-5': isScrollingDown }
     ]"
   >
     <div
@@ -39,7 +39,7 @@ onUnmounted(() => {
       <div class="w-full sm:hidden">
         <UseDrawer />
       </div>
-      <div class="flex items-center max-[640px]:w-full gap-5">
+      <div class="flex items-stretch max-[640px]:w-full gap-5">
         <RouterLink
           :to="`${routeUrl[0].path}`"
           class="py-2.5 sm:px-6 bg-[#FE5F5F] rounded-full text-white font-semibold text-center -mt-2 w-full sm:w-auto"
@@ -55,9 +55,3 @@ onUnmounted(() => {
     </div>
   </div>
 </template>
-
-<style>
-.bg-blur {
-  backdrop-filter: blur(10px); /* Example blur effect */
-}
-</style>

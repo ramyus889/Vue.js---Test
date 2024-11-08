@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <div class="sticky top-0 left-0 right-0">
+  <div class="">
     <div
       class="w-full h-screen bg-[url('/testFigma/Group.png')] bg-no-repeat -z-40 sm:pt-[150px] pt-[170px] bg-cover bg-bottom"
     >
