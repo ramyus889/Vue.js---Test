@@ -9,7 +9,7 @@ const route = useRoute();
 watch(
   () => route.path,
   (newPath) => {
-    if (newPath === '/RegHome') {
+    if (newPath === '/Reg' || newPath === '/Login') {
       show.value = false;
     } else {
       show.value = true;
