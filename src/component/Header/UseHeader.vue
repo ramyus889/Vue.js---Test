@@ -41,7 +41,7 @@ onUnmounted(() => {
       </div>
       <div class="flex items-stretch max-[640px]:w-full gap-5">
         <RouterLink
-          :to="`${routeUrl[0].path}`"
+          :to="`${routeUrl[1].path}`"
           class="py-2.5 sm:px-6 bg-[#FE5F5F] rounded-full text-white font-semibold text-center -mt-2 w-full sm:w-auto"
           >Личный кабинет</RouterLink
         >

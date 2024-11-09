@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
+    "@primevue/forms": "^4.2.1",
     "@primevue/themes": "^4.0.5",
     "@vueuse/motion": "^2.2.6",
     "animejs": "^3.2.2",
