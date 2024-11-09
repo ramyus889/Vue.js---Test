@@ -25,7 +25,7 @@ const items = [
     <div class="">
       <div class="flex items-center gap-3 place-content-center">
         <img src="/testFigma/Vector.png" class="w-[12px]" alt="" />
-        <div class="font-bold sm:text-[40px] text-[38px]">Преимущества</div>
+        <div class="font-bold sm:text-[40px] text-[32px]">Преимущества</div>
         <img src="/testFigma/Vector.png" class="w-[12px]" alt="" />
       </div>
       <div class="flex flex-wrap place-content-center gap-[100px] mt-[70px]">

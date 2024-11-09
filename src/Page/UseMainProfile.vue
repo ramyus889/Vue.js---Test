@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <div class="mt-[150px]">
+  <div class="mt-[150px] sm:px-5">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-4">
         <img

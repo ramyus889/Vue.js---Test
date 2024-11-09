@@ -33,7 +33,7 @@ const items = [
     <div class="">
       <div class="flex items-center gap-3 place-content-center">
         <img src="/testFigma/Vector.png" class="w-[12px]" alt="" />
-        <div class="font-bold sm:text-[40px] text-[38px]">Истории успеха</div>
+        <div class="font-bold sm:text-[40px] text-[32px]">Истории успеха</div>
         <img src="/testFigma/Vector.png" class="w-[12px]" alt="" />
       </div>
       <div

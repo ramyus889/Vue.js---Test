@@ -39,7 +39,7 @@ onUnmounted(() => {
       <div class="w-full sm:hidden">
         <UseDrawer />
       </div>
-      <div class="flex items-stretch max-[640px]:w-full gap-5">
+      <div class="flex items-stretch max-[640px]:w-full md:gap-5 gap-3">
         <RouterLink
           :to="`${routeUrl[1].path}`"
           class="py-2.5 sm:px-6 bg-[#FE5F5F] rounded-full text-white font-semibold text-center -mt-2 w-full sm:w-auto"
@@ -52,7 +52,7 @@ onUnmounted(() => {
       </div>
       <div class="hidden sm:block">
         <a href="#">
-          <img src="/testFigma/Frame13.png" alt="" />
+          <img src="/testFigma/Frame13.png" class="md:w-[190px] w-[170px]" alt="" />
         </a>
       </div>
     </div>
