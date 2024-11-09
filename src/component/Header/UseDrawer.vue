@@ -7,10 +7,18 @@
       class="!bg-white !h-[200px] !text-black"
     >
       <div class="flex flex-col gap-1 pt-3 border-t border-t-black">
-        <a href="#" @click="visible = false" class="font-bold underline">Каталог услуг</a>
-        <a href="#" @click="visible = false" class="font-bold underline">Онлайн помощник</a>
-        <RouterLink @click="visible = false" :to="`${routeUrl[0].path}`" class="font-bold underline"
-          >Мой бизнес</RouterLink
+        <RouterLink
+          @click="visible = false"
+          :to="`${routeUrl[0].path}`"
+          class="flex items-center gap-2 font-bold"
+          ><img src="/testFigma/Vector.png" alt="" class="w-[12px] h-[12px]" /> Мой
+          бизнес</RouterLink
+        >
+        <a href="#" @click="visible = false" class="flex items-center gap-2 font-bold"
+          ><img src="/testFigma/Vector.png" alt="" class="w-[12px] h-[12px]" /> Каталог услуг</a
+        >
+        <a href="#" @click="visible = false" class="flex items-center gap-2 font-bold"
+          ><img src="/testFigma/Vector.png" alt="" class="w-[12px] h-[12px]" /> Онлайн помощник</a
         >
       </div>
     </Drawer>
