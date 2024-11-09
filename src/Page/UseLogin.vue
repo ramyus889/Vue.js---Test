@@ -1,3 +1,11 @@
+<script>
+export default {
+  name: 'UseLogin',
+  mounted() {
+    document.title = 'Вход';
+  }
+};
+</script>
 <script setup>
 import { routeUrl } from '@/router/routes';
 import { ref } from 'vue';
@@ -46,7 +54,7 @@ const handleSubmit = (event) => {
   event.preventDefault();
   if (validateForm()) {
     console.log('Form submitted', form.value);
-    router.push('/');
+    router.push('/Profile');
   }
 };
 </script>

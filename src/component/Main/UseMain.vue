@@ -1,3 +1,11 @@
+<script>
+export default {
+  name: 'UseMain',
+  mounted() {
+    document.title = 'Мой бизнес';
+  }
+};
+</script>
 <script setup></script>
 <template>
   <div class="">

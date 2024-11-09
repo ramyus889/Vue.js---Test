@@ -1,5 +1,6 @@
 import UseHome from '@/component/UseHome.vue';
 import UseLogin from '@/Page/UseLogin.vue';
+import UseProfile from '@/Page/UseProfile.vue';
 import UseReg from '@/Page/UseReg.vue';
 
 export const routeUrl = [
@@ -11,6 +12,9 @@ export const routeUrl = [
   },
   {
     path: '/Login'
+  },
+  {
+    path: '/Profile'
   }
 ];
 
@@ -26,5 +30,9 @@ export const routes = [
   {
     path: `${routeUrl[2].path}`,
     component: UseLogin
+  },
+  {
+    path: `${routeUrl[3].path}`,
+    component: UseProfile
   }
 ];

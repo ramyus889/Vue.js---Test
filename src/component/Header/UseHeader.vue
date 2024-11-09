@@ -46,6 +46,9 @@ onUnmounted(() => {
           >Личный кабинет</RouterLink
         >
         <a href="#" class="hidden font-bold sm:block"> Каталог услуг </a>
+        <RouterLink :to="`${routeUrl[0].path}`" class="hidden font-bold sm:block">
+          Мой бизнес
+        </RouterLink>
       </div>
       <div class="hidden sm:block">
         <a href="#">

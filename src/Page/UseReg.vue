@@ -1,3 +1,11 @@
+<script>
+export default {
+  name: 'UseReg',
+  mounted() {
+    document.title = 'Регистрация';
+  }
+};
+</script>
 <script setup>
 import { routeUrl } from '@/router/routes';
 import { ref } from 'vue';

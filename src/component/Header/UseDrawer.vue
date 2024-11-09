@@ -9,6 +9,9 @@
       <div class="flex flex-col gap-1 pt-3 border-t border-t-black">
         <a href="#" @click="visible = false" class="font-bold underline">Каталог услуг</a>
         <a href="#" @click="visible = false" class="font-bold underline">Онлайн помощник</a>
+        <RouterLink @click="visible = false" :to="`${routeUrl[0].path}`" class="font-bold underline"
+          >Мой бизнес</RouterLink
+        >
       </div>
     </Drawer>
     <div class="w-full">
@@ -24,6 +27,7 @@
 </template>
 
 <script setup>
+import { routeUrl } from '@/router/routes';
 import gsap from 'gsap';
 import Drawer from 'primevue/drawer';
 import { onMounted, onUnmounted, ref } from 'vue';
