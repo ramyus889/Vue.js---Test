@@ -66,7 +66,7 @@ const items = [
       >
         <div :class="item.classFlex" class="flex flex-col items-center gap-10 lg:gap-20">
           <div class="" data-aos="fade-up" :data-aos-delay="item.delay">
-            <img :src="item.image" alt="" />
+            <img :src="item.image" alt="" class="w-[350px]" />
           </div>
           <div class="text-center lg:text-start">
             <div
