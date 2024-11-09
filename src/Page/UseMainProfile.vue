@@ -1,22 +1,62 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+import UseStats from './components/UseStats.vue';
+
+const profile = ref({
+  name: 'Рамазан Юсупов',
+  email: 'frontend@example.com',
+  avatarUrl: '/img/Code/frontend.jpg',
+  location: 'Москва, Россия',
+  socialLinks: {
+    dev: 'https://dev.to/',
+    hh: 'https://hh.ru/'
+  },
+  experience: 'Опыт Frontend разработки  1.6 лет.'
+});
+</script>
+
 <template>
-  <div class="mt-[150px] sm:px-5">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-4">
+  <div class="px-5 mt-[150px]">
+    <div class="">
+      <div class="flex items-center pb-5 border-b">
         <img
-          src="/img/Code/frontend.jpg"
-          alt=""
+          :src="profile.avatarUrl"
           data-aos="fade-up"
           data-aos-delay="100"
-          class="sm:w-[130px] w-[75px] rounded-2xl"
+          alt="Profile Picture"
+          class="w-24 h-24 mr-4 rounded-full"
         />
-        <div class="flex flex-col gap-2 sm:gap-4">
-          <div class="sm:text-[30px] text-[18px]" data-aos="fade-up" data-aos-delay="150">
-            Рамазан Юсупов
-          </div>
-          <div class="" data-aos="fade-up" data-aos-delay="200">Frontend Разработчик</div>
+        <div>
+          <h2 class="text-xl font-bold" data-aos="fade-up" data-aos-delay="150">
+            {{ profile.name }}
+          </h2>
+          <p class="text-gray-600" data-aos="fade-up" data-aos-delay="200">{{ profile.email }}</p>
+          <p class="text-gray-600" data-aos="fade-up" data-aos-delay="250">
+            {{ profile.location }}
+          </p>
         </div>
       </div>
+
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold" data-aos="fade-up" data-aos-delay="100">Опыт</h3>
+        <p class="text-gray-700" data-aos="fade-up" data-aos-delay="150">
+          {{ profile.experience }}
+        </p>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold" data-aos="fade-up" data-aos-delay="200">
+          Социальные сети
+        </h3>
+        <ul class="list-none">
+          <li data-aos="fade-up" data-aos-delay="250">
+            <a :href="profile.socialLinks.dev" target="_blank" class="text-blue-500">Dev.to</a>
+          </li>
+          <li data-aos="fade-up" data-aos-delay="300">
+            <a :href="profile.socialLinks.hh" target="_blank" class="text-blue-500">HeadHunter</a>
+          </li>
+        </ul>
+      </div>
     </div>
+    <UseStats />
   </div>
 </template>
