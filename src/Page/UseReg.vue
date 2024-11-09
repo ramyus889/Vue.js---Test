@@ -77,7 +77,7 @@ const handleSubmit = (event) => {
 
 <template>
   <div class="flex items-center justify-center min-h-screen px-5">
-    <div class="border-2 border-[#FE5F5F] rounded-2xl">
+    <div class="border-2 border-[#FE5F5F] rounded-2xl max-[640px]:w-full">
       <div class="flex place-content-center">
         <div
           class="px-4 pb-2 text-2xl font-bold text-center border-t-0 border-b-2 border-[#FE5F5F] border-x-2 rounded-b-2xl"
@@ -86,8 +86,8 @@ const handleSubmit = (event) => {
         </div>
       </div>
       <form @submit="handleSubmit">
-        <div class="grid items-center grid-cols-2 gap-5 p-5 place-content-center">
-          <div class="flex flex-col gap-5 max-[550px]:w-full">
+        <div class="grid items-center grid-cols-1 gap-5 p-5 sm:grid-cols-2 place-content-center">
+          <div class="flex flex-col gap-5 max-[640px]:w-full">
             <div class="flex flex-col gap-1">
               <input
                 v-model="form.lastName"
@@ -122,7 +122,7 @@ const handleSubmit = (event) => {
               }}</span>
             </div>
           </div>
-          <div class="flex flex-col gap-5 max-[550px]:w-full">
+          <div class="flex flex-col gap-5 max-[640px]:w-full">
             <div class="flex flex-col gap-1">
               <input
                 v-model="form.email"

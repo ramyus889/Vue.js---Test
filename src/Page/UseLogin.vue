@@ -60,7 +60,7 @@ const handleSubmit = (event) => {
 </script>
 <template>
   <div class="flex items-center justify-center min-h-screen px-5">
-    <div class="border-2 border-[#FE5F5F] rounded-2xl max-w-[400px] w-full">
+    <div class="border-2 border-[#FE5F5F] rounded-2xl max-w-[500px] w-full">
       <div class="flex place-content-center">
         <div
           class="px-4 pb-2 text-2xl font-bold text-center border-t-0 border-b-2 border-[#FE5F5F] border-x-2 rounded-b-2xl"
