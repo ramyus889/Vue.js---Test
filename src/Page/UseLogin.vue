@@ -55,7 +55,7 @@ const handleSubmit = (event) => {
     console.log('Form submitted', form.value);
     setTimeout(() => {
       isLoading.value = false;
-      router.push('/');
+      router.push('/Profile');
     }, 2000);
   }
 };
