@@ -8,26 +8,21 @@ export default {
 </script>
 <script setup>
 import { routeUrl } from '@/router/routes';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const form = ref({
-  lastName: '',
-  firstName: '',
-  middleName: '',
   email: '',
-  phone: '',
   password: ''
 });
 
 const errors = ref({
-  lastName: '',
-  firstName: '',
-  middleName: '',
   email: '',
-  phone: '',
   password: ''
 });
+
+const isLoading = ref(false);
+const isSubmitted = ref(false);
 
 const validateForm = () => {
   let isValid = true;
@@ -48,13 +43,20 @@ const validateForm = () => {
   return isValid;
 };
 
+const isFormValid = computed(() => validateForm());
+
 const router = useRouter();
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  if (validateForm()) {
+  isSubmitted.value = true;
+  if (isFormValid.value) {
+    isLoading.value = true;
     console.log('Form submitted', form.value);
-    router.push('/Profile');
+    setTimeout(() => {
+      isLoading.value = false;
+      router.push('/');
+    }, 2000);
   }
 };
 </script>
@@ -78,7 +80,9 @@ const handleSubmit = (event) => {
                 placeholder="Email"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.email" class="text-red-500 text-[12px]">{{ errors.email }}</span>
+              <span v-if="isSubmitted && errors.email" class="text-red-500 text-[12px]">{{
+                errors.email
+              }}</span>
             </div>
             <div class="flex flex-col gap-1">
               <input
@@ -87,15 +91,19 @@ const handleSubmit = (event) => {
                 placeholder="Пароль"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.password" class="text-red-500 text-[12px]">{{
+              <span v-if="isSubmitted && errors.password" class="text-red-500 text-[12px]">{{
                 errors.password
               }}</span>
             </div>
-            <input
+            <button
               type="submit"
-              value="Войти"
-              class="pt-2 pb-2 text-white transition-all border-2 border-[#FE5F5F] outline-none cursor-pointer hover:border-[#f24c4c] hover:bg-[#f24c4c] rounded-2xl bg-[#FE5F5F]"
-            />
+              :disabled="!isFormValid || isLoading"
+              :class="{ 'opacity-50': !isFormValid || isLoading }"
+              class="w-full pt-2 pb-2 text-white flex items-center justify-center disabled:cursor-not-allowed transition-all border-2 border-[#FE5F5F] outline-none cursor-pointer hover:border-black/65 hover:bg-black/65 rounded-2xl bg-[#FE5F5F]"
+            >
+              Войти
+              <div v-if="isLoading" class="ml-2 loader"></div>
+            </button>
           </div>
         </div>
       </form>
@@ -120,3 +128,35 @@ const handleSubmit = (event) => {
     </div>
   </div>
 </template>
+<style scoped>
+.loader {
+  width: 18px;
+  aspect-ratio: 1;
+  display: grid;
+}
+.loader::before,
+.loader::after {
+  content: '';
+  grid-area: 1/1;
+  --c: no-repeat radial-gradient(farthest-side, #25b09b 92%, #0000);
+  background:
+    var(--c) 50% 0,
+    var(--c) 50% 100%,
+    var(--c) 100% 50%,
+    var(--c) 0 50%;
+  background-size: 12px 12px;
+  animation: l12 1s infinite;
+}
+.loader::before {
+  margin: 4px;
+  filter: hue-rotate(45deg);
+  background-size: 8px 8px;
+  animation-timing-function: linear;
+}
+
+@keyframes l12 {
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+</style>

@@ -8,7 +8,7 @@ export default {
 </script>
 <script setup>
 import { routeUrl } from '@/router/routes';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
 const form = ref({
@@ -28,6 +28,9 @@ const errors = ref({
   phone: '',
   password: ''
 });
+
+const isLoading = ref(false);
+const isSubmitted = ref(false);
 
 const validateForm = () => {
   let isValid = true;
@@ -49,7 +52,7 @@ const validateForm = () => {
     isValid = false;
   }
   if (form.value.firstName.length < 3) {
-    errors.value.firstName = 'Имя должно содержать минимум 3 буквы';
+    errors.value.firstName = 'Имя должна содержать минимум 3 буквы';
     isValid = false;
   }
   if (form.value.middleName.length < 3) {
@@ -64,13 +67,20 @@ const validateForm = () => {
   return isValid;
 };
 
+const isFormValid = computed(() => validateForm());
+
 const router = useRouter();
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  if (validateForm()) {
+  isSubmitted.value = true;
+  if (isFormValid.value) {
+    isLoading.value = true;
     console.log('Form submitted', form.value);
-    router.push('/Login');
+    setTimeout(() => {
+      isLoading.value = false;
+      router.push('/Login');
+    }, 2000);
   }
 };
 </script>
@@ -95,7 +105,7 @@ const handleSubmit = (event) => {
                 placeholder="Фамилия"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.lastName" class="text-red-500 text-[12px]">{{
+              <span v-if="isSubmitted && errors.lastName" class="text-red-500 text-[12px]">{{
                 errors.lastName
               }}</span>
             </div>
@@ -106,7 +116,7 @@ const handleSubmit = (event) => {
                 placeholder="Имя"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.firstName" class="text-red-500 text-[12px]">{{
+              <span v-if="isSubmitted && errors.firstName" class="text-red-500 text-[12px]">{{
                 errors.firstName
               }}</span>
             </div>
@@ -117,7 +127,7 @@ const handleSubmit = (event) => {
                 placeholder="Отчество"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.middleName" class="text-red-500 text-[12px]">{{
+              <span v-if="isSubmitted && errors.middleName" class="text-red-500 text-[12px]">{{
                 errors.middleName
               }}</span>
             </div>
@@ -130,7 +140,9 @@ const handleSubmit = (event) => {
                 placeholder="Email"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.email" class="text-red-500 text-[12px]">{{ errors.email }}</span>
+              <span v-if="isSubmitted && errors.email" class="text-red-500 text-[12px]">{{
+                errors.email
+              }}</span>
             </div>
             <div class="flex flex-col gap-1">
               <input
@@ -139,7 +151,9 @@ const handleSubmit = (event) => {
                 placeholder="+7 (999) 999-99-99"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.phone" class="text-red-500 text-[12px]">{{ errors.phone }}</span>
+              <span v-if="isSubmitted && errors.phone" class="text-red-500 text-[12px]">{{
+                errors.phone
+              }}</span>
             </div>
             <div class="flex flex-col gap-1">
               <input
@@ -148,18 +162,22 @@ const handleSubmit = (event) => {
                 placeholder="Пароль"
                 class="py-2 text-black bg-white border-2 border-black outline-none ps-5 rounded-2xl"
               />
-              <span v-if="errors.password" class="text-red-500 text-[12px]">{{
+              <span v-if="isSubmitted && errors.password" class="text-red-500 text-[12px]">{{
                 errors.password
               }}</span>
             </div>
           </div>
         </div>
         <div class="flex px-5 place-content-center">
-          <input
+          <button
             type="submit"
-            value="Зарегистрироваться"
-            class="w-full pt-2 pb-2 text-white transition-all border-2 border-[#FE5F5F] outline-none cursor-pointer hover:border-black/65 hover:bg-black/65 rounded-2xl bg-[#FE5F5F]"
-          />
+            :disabled="!isFormValid || isLoading"
+            :class="{ 'opacity-50': !isFormValid || isLoading }"
+            class="w-full pt-2 pb-2 text-white flex items-center justify-center disabled:cursor-not-allowed transition-all border-2 border-[#FE5F5F] outline-none cursor-pointer hover:border-black/65 hover:bg-black/65 rounded-2xl bg-[#FE5F5F]"
+          >
+            Зарегистрироваться
+            <div v-if="isLoading" class="ml-2 loader"></div>
+          </button>
         </div>
       </form>
       <div class="flex justify-between w-full mt-[30px]">
@@ -183,3 +201,36 @@ const handleSubmit = (event) => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.loader {
+  width: 18px;
+  aspect-ratio: 1;
+  display: grid;
+}
+.loader::before,
+.loader::after {
+  content: '';
+  grid-area: 1/1;
+  --c: no-repeat radial-gradient(farthest-side, #25b09b 92%, #0000);
+  background:
+    var(--c) 50% 0,
+    var(--c) 50% 100%,
+    var(--c) 100% 50%,
+    var(--c) 0 50%;
+  background-size: 12px 12px;
+  animation: l12 1s infinite;
+}
+.loader::before {
+  margin: 4px;
+  filter: hue-rotate(45deg);
+  background-size: 8px 8px;
+  animation-timing-function: linear;
+}
+
+@keyframes l12 {
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+</style>
